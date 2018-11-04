@@ -96,7 +96,7 @@ package body Bindo is
    -- Debugging elaboration order issues --
    ----------------------------------------
 
-   --  ???
+   --  Kirtchev ??? fill this section out
 
    -----------
    -- Types --
@@ -127,11 +127,6 @@ package body Bindo is
    procedure Destroy (IGE_Id : in out Invocation_Graph_Edge_Id);
    pragma Inline (Destroy);
    --  Destroy invocation graph edge with id IGE_Id
-
---   function Hash
---     (IGE_Id : Invocation_Graph_Edge_Id) return Bucket_Range_Type;
---   pragma Inline (Hash);
-   --  Obtain the hash value of key IGE_Id
 
    --  The following type represents a list of invocation graph edges
 
@@ -191,10 +186,6 @@ package body Bindo is
    procedure Destroy (LGE_Id : in out Library_Graph_Edge_Id);
    pragma Inline (Destroy);
    --  Destroy library graph edge with id LGE_Id
-
---   function Hash (LGE_Id : Library_Graph_Edge_Id) return Bucket_Range_Type;
---   pragma Inline (Hash);
-   --  Obtain the hash value of key LGE_Id
 
    --  The following type represents a list of library graph edges
 
@@ -475,10 +466,6 @@ package body Bindo is
 
          Elaborate_All_Edge,
          --  Successor withs Predecessor, and has pragma Elaborate_All for it
-
---       Forced_Edge,
-         --  Successor is forced to with Predecessor by virtue of an existing
-         --  elaboration order provided in a file.
 
          Invocation_Edge,
          --  An invocation construct in unit Successor invokes a target in unit
@@ -2122,31 +2109,11 @@ package body Bindo is
    -- Hash --
    ----------
 
---   function Hash (LGE_Id : Library_Graph_Edge_Id) return Bucket_Range_Type is
---   begin
---      pragma Assert (Present (LGE_Id));
---      return Bucket_Range_Type (LGE_Id);
---   end Hash;
-
-   ----------
-   -- Hash --
-   ----------
-
    function Hash (LGN_Id : Library_Graph_Node_Id) return Bucket_Range_Type is
    begin
       pragma Assert (Present (LGN_Id));
       return Bucket_Range_Type (LGN_Id);
    end Hash;
-
-   ----------
-   -- Hash --
-   ----------
-
---   function Hash (SCCGN_Id : SCC_Graph_Node_Id) return Bucket_Range_Type is
---   begin
---      pragma Assert (Present (SCCGN_Id));
---      return Bucket_Range_Type (SCCGN_Id);
---   end Hash;
 
    ----------
    -- Hash --
