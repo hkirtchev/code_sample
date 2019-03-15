@@ -1,8 +1,5 @@
 # code_sample
 
-The two files included in this repository are part of an ongoing one man project in the GNAT Pro compiler and GNAT Pro binder.
-Note that this code is a work in progress. The code contains bugs, spelling errors, missing comments, ???s, etc.
-
 1. Semantic background
 
 In the Ada programming language model, prior to executing the main program, all units which comprise the application must be loaded,
@@ -110,9 +107,9 @@ invoking a construct whose body has not been elaborated, emission of error diagn
 The GNAT Pro binder's task (among many) is to determine the proper elaboration order for all units in the application. Once the order is
 found, it is encoded in a driver which elaborates the units and executes the main program.
 
-Bindo (BINDer Order) is in charge of discovering the proper elaboration order, or diagnosing an unsatisfiable set of dependencies (not
-implemented yet). Bindo achieves this by constructing three graphs - unit graph (referred to **library graph***), invocation graph
-(mentioned before), and a strongly-connected component graph (referred to **SCC graph**).
+Bindo (BINDer Order) is in charge of discovering the proper elaboration order, or diagnosing an unsatisfiable set of dependencies. Bindo
+achieves this by constructing three graphs - unit graph (referred to **library graph***), invocation graph (mentioned before), and a
+strongly-connected component graph (referred to **SCC graph**).
 
 The library graph is constructed directly from the explicit dependencies (the `with`s) in the units. Some of these explicit dependencies
 can be further altered by specifying `pragma Elaborate` or `pragma Elaborate_All` which enfore additional programmer-driven constraints
